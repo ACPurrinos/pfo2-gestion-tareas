@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Gestión de Tareas</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        header {
+            background: #1e293b;
+            padding: 25px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            color: #38bdf8;
+            font-size: 26px;
+        }
+
+        section {
+            padding: 40px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .card {
+            background: #d7e0f0;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            color: black;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        ul {
+            line-height: 1.8;
+        }
+
+        img {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #1e293b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>API REST - Sistema de Gestión de Tareas</h1>
+    <p>Flask + SQLite + Cliente en Consola</p>
+</header>
+
+<section>
+
+    <div class="card">
+        <h3>Descripción del proyecto</h3>
+        <p>
+            Este sistema implementa una API REST desarrollada en Flask que permite registrar usuarios,
+            autenticarse mediante login, gestionar tareas y almacenar datos en una base de datos SQLite.
+            Las contraseñas se almacenan de forma segura mediante hashing.
+        </p>
+
+        <h3>Características principales</h3>
+        <ul>
+            <li>Registro de usuarios</li>
+            <li>Inicio y cierre de sesión</li>
+            <li>Protección de rutas mediante sesión</li>
+            <li>Gestión de tareas (CRUD básico)</li>
+            <li>Persistencia con SQLite</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Endpoints</h3>
+        <ul>
+            <li>POST /registro</li>
+            <li>POST /login</li>
+            <li>POST /logout</li>
+            <li>GET /tareas</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Fundamentos técnicos</h3>
+
+        <h4>Seguridad (Hashing de contraseñas)</h4>
+        <p>
+            Las contraseñas se almacenan utilizando hashing para evitar su exposición en texto plano,
+            aumentando la seguridad en caso de acceso no autorizado a la base de datos.
+        </p>
+
+        <h4>Uso de SQLite</h4>
+        <p>
+            SQLite se utiliza por su simplicidad, ya que no requiere configuración adicional y permite
+            almacenar datos en un único archivo local, ideal para proyectos académicos.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Evidencias del sistema</h3>
+
+        <h3>Registro exitoso</h3>
+        <img src="images/post_registro_registroExitoso.jpg">
+        <h3>Registro sin datos</h3>
+        <img src="images/post_registro_faltanDatos.jpg">
+        <h3>Registro usuario ya existente</h3>
+        <img src="images/post_registro_usuarioExistente.jpg">
+        <h3>Inicio de sesión</h3>
+        <img src="images/post_login_loginExitoso.jpg">
+        <img src="images/post_login_credencialesIncorrectas.jpg">
+        <h3>Cierre de sesión</h3>
+        <img src="images/post_logoutExitoso.jpg">
+        <h3>Listar tareas - Con usuario logueado</h3>
+        <img src="images/get_tareas_usuarioLogueado.jpg">
+        <h3>Listar tareas - Sin sesión iniciada</h3>
+        <img src="images/get_tareas_sinLogin.jpg">
+        <h3>Crear tareas - con sesión iniciada</h3>
+        <img src="images/post_tareas_crearTareasExitoso.jpg">
+
+    </div>
+
+</section>
+
+<footer>
+    <p>Proyecto académico - API REST con Flask</p>
+</footer>
+
+</body>
+</html>

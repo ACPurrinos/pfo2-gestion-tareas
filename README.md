@@ -65,7 +65,7 @@ gestion/
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <URL_DEL_REPO>
+git clone https://github.com/ACPurrinos/pfo2-gestion-tareas.git
 cd gestion
 ````
 

@@ -1,5 +1,5 @@
 # IFTS 29 - Programación Sobre Redes  
-## Práctica Formativa N° 2 - Sistema de Gestión de Tareas con API (Flask + SQLite)
+## Práctica Formativa N° 3 - Sistema de Gestión de Tareas con API (Flask + SQLite)
 
 ###  Alumno: Andrea Purriños
 ###  Comisión: 3A1C26
@@ -12,6 +12,26 @@ Esta entrega transforma el sistema monolítico anterior en una arquitectura dist
 ---
 
 ## Diagrama de la Arquitectura
+
+¡Ah! Ese error de sintaxis pasó porque en el README.md que te armé me comí un enter/salto de línea justo al final del bloque de Mermaid. La línea ``` de cierre se pegó con el título de abajo (## Nuevas Tecnologías...) y volvió loco al compilador de GitHub.
+
+Ya está corregido. Acá tenés el bloque exacto del README completo arreglado con los espacios y saltos de línea correspondientes para que lo copies, lo pegues y GitHub te lo renderice impecable:
+
+Markdown
+# IFTS 29 - Programación Sobre Redes  
+### Alumno: xxxxxxx
+### Comisión: 3A1C26
+
+---
+
+# 🚀 Práctica Formativa N° 3 - Rediseño como Sistema Distribuido (Sockets + Pool de Hilos)
+
+## Descripción de la PFO 3
+Esta entrega transforma el sistema monolítico anterior en una arquitectura distribuida de alta disponibilidad. Se reemplazó el protocolo HTTP y el framework Flask por una comunicación basada en **Sockets TCP nativos**, delegando el procesamiento de datos a un **Pool de Hilos (Workers)** para simular un entorno escalable y asincrónico.
+
+---
+
+## 📊 Diagrama de la Arquitectura
 
 ```mermaid
 flowchart TD

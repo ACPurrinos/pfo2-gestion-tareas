@@ -6,6 +6,59 @@
 
 ---
 
+## Descripción de la PFO 3
+Esta entrega transforma el sistema monolítico anterior en una arquitectura distribuida de alta disponibilidad. Se reemplazó el protocolo HTTP y el framework Flask por una comunicación basada en **Sockets TCP nativos**, delegando el procesamiento de datos a un **Pool de Hilos (Workers)** para simular un entorno escalable y asincrónico.
+
+---
+
+## Diagrama de la Arquitectura
+
+```mermaid
+flowchart TD
+    subgraph Clientes [Capa de Clientes]
+        A[Cliente Web]
+        B[Cliente Móvil]
+    end
+
+    subgraph Entrada [Capa de Entrada y Red]
+        C[Balanceador de Carga<br>Nginx / HAProxy]
+    end
+
+    subgraph Procesamiento [Capa de Servidores]
+        W1[Servidor Worker 1<br>Pool de Hilos]
+        W2[Servidor Worker 2<br>Pool de Hilos]
+    end
+
+    subgraph Mensajeria [Capa de Mensajería]
+        RMQ[Cola de Mensajes<br>RabbitMQ]
+    end
+
+    subgraph Almacenamiento [Capa de Persistencia Distribuida]
+        DB[(DB Distribuida<br>PostgreSQL)]
+        S3[Almacenamiento Objetos<br>Amazon S3]
+    end
+
+    A -->|Petición Socket/HTTP| C
+    B -->|Petición Socket/HTTP| C
+    C --> W1
+    C --> W2
+    W1 -->|1. Publica Tarea| RMQ
+    W2 -->|1. Publica Tarea| RMQ
+    RMQ -->|2. Consume Tarea| W1
+    RMQ -->|2. Consume Tarea| W2
+    W1 -->|3. Guarda Datos| DB
+    W1 -->|3. Guarda Archivos| S3
+    W2 -->|3. Guarda Datos| DB
+    W2 -->|3. Guarda Archivos| S3
+
+## Nuevas Tecnologías e Implementación
+Sockets (TCP/IP): Protocolo de comunicación directo y bidireccional en texto plano (JSON serializado).
+
+Concurrent Futures (ThreadPoolExecutor): Manejo de un pool de hilos del lado del servidor para procesar las peticiones de los trabajadores (Workers) en paralelo sin bloquear el socket principal.
+
+
+## Historial - Práctica Formativa N° 2 (Flask + SQLite)
+
 ## 🌐 CAPTURAS DE PANTALLA DE PRUEBAS EN THUNDER CLIENT
 🔗 https://acpurrinos.github.io/pfo2-gestion-tareas/
 

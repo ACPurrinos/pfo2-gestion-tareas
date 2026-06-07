@@ -25,7 +25,7 @@ flowchart TD
         C[Balanceador de Carga<br>Nginx / HAProxy]
     end
 
-    subgraph Procesamiento [Capa de Servidores]
+    subgraph Procesamiento [Capa de Servidores / Workers]
         W1[Servidor Worker 1<br>Pool de Hilos]
         W2[Servidor Worker 2<br>Pool de Hilos]
     end
@@ -39,18 +39,16 @@ flowchart TD
         S3[Almacenamiento Objetos<br>Amazon S3]
     end
 
-    A -->|Petición Socket/HTTP| C
-    B -->|Petición Socket/HTTP| C
-    C --> W1
-    C --> W2
-    W1 -->|1. Publica Tarea| RMQ
-    W2 -->|1. Publica Tarea| RMQ
-    RMQ -->|2. Consume Tarea| W1
-    RMQ -->|2. Consume Tarea| W2
-    W1 -->|3. Guarda Datos| DB
-    W1 -->|3. Guarda Archivos| S3
-    W2 -->|3. Guarda Datos| DB
-    W2 -->|3. Guarda Archivos| S3
+    %% Flujos simplificados para evitar superposición de texto
+    A & B -->|Sockets TCP| C
+    C --> W1 & W2
+    
+    %% Envío y consumo de la cola
+    W1 & W2 ===>|1. Publica / 2. Consume| RMQ
+    
+    %% Guardado en persistencia
+    W1 & W2 --->|3. Guarda Datos| DB
+    W1 & W2 --->|3. Guarda Archivos| S3
 ```
 ---
 ## Nuevas Tecnologías e Implementación

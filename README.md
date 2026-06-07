@@ -51,7 +51,7 @@ flowchart TD
     W1 -->|3. Guarda Archivos| S3
     W2 -->|3. Guarda Datos| DB
     W2 -->|3. Guarda Archivos| S3
-
+**` ``` `**
 ---
 ## Nuevas Tecnologías e Implementación
 Sockets (TCP/IP): Protocolo de comunicación directo y bidireccional en texto plano (JSON serializado).
